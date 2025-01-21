@@ -22,6 +22,7 @@ public class SecurityConfig {
                         .requestMatchers("/contact").permitAll() //premit all to access this end point
                         .anyRequest().authenticated());
         //http.formLogin(withDefaults());  remove default security login html from
+        http.csrf(csrf->csrf.disable());
         http.sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.httpBasic(withDefaults());

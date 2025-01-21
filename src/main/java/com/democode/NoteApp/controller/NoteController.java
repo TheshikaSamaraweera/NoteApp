@@ -33,17 +33,17 @@ public class NoteController {
     }
 
     @PutMapping("/{noteId}")
-    public Note updateNote(@PathVariable Long id,@RequestBody String updateContent, @AuthenticationPrincipal UserDetails userDetails){
+    public Note updateNote(@PathVariable Long noteId,@RequestBody String updateContent, @AuthenticationPrincipal UserDetails userDetails){
         String username = userDetails.getUsername();
         System.out.println("USER DETAILS: " + username);
-        return noteService.updateNoteForUser(id,updateContent,username);
+        return noteService.updateNoteForUser(noteId,updateContent,username);
     }
 
     @DeleteMapping("/{noteId}")
-    public void deleteNote(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails){
+    public void deleteNote(@PathVariable Long noteId, @AuthenticationPrincipal UserDetails userDetails){
         String username = userDetails.getUsername();
         System.out.println("USER DETAILS: " + username);
-        noteService.DeleteNoteForUser(id,username);
+        noteService.DeleteNoteForUser(noteId,username);
     }
 
 
